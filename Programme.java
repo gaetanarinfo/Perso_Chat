@@ -63,7 +63,7 @@ public class Programme {
         contentPane.setLayout(groupLayout);
 
         // Panneau bouton chat
-        Icon addChatsIcon = new ImageIcon("src/images/chat-btn.png");
+        Icon addChatsIcon = new ImageIcon("images/chat-btn.png");
         JButton removeChats = new JButton("Supprimé un chat", addChatsIcon);
         JButton addChats = new JButton("Ajouté un chat", addChatsIcon);
         addChats.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -205,7 +205,7 @@ public class Programme {
         // Image de fond
         ImageIcon imageIcon;
 
-        imageIcon = new ImageIcon("src/images/CHARTREUX.png");
+        imageIcon = new ImageIcon("images/CHARTREUX.png");
         Image Images = imageIcon.getImage();
         Image newimg = Images.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
@@ -219,7 +219,7 @@ public class Programme {
 
         // Button Log
         ImageIcon imageIcon2;
-        imageIcon2 = new ImageIcon("src/images/logs.png");
+        imageIcon2 = new ImageIcon("images/logs.png");
         Image Images2 = imageIcon2.getImage();
         Image newimg2 = Images2.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg2);
@@ -312,7 +312,7 @@ public class Programme {
 
               String fileContent = pane.getText();
      
-              FileWriter fileWriter = new FileWriter("src/ListeChat.txt");
+              FileWriter fileWriter = new FileWriter("ListeChat.txt");
               fileWriter.write(fileContent);
               
               fileWriter.close();
