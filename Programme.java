@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
@@ -33,7 +35,7 @@ import javax.swing.text.StyleConstants;
 
 public class Programme {
 
-  static MouseAdapter iconLogs;
+static MouseAdapter iconLogs;
   static MouseAdapter btnaddchats;
   static MouseAdapter btnremovechats;
 
@@ -46,7 +48,11 @@ public class Programme {
         System.out.print("\r\n" + " -- Démarrage du programme -- " + "\r\n" + "\r\n");
 
         // Lancement du script java Chat
-        Chat.ChatsDebug();
+        try {
+          Chat.ChatsDebug();
+        } catch (IOException e1) {
+          e1.printStackTrace();
+        }
 
         // Création d'une instance Window
         JFrame window = new JFrame("Les Chats !");
@@ -422,6 +428,18 @@ public class Programme {
   {
       FileWriter fileWriter = new FileWriter("Logs.txt");
       fileWriter.write(ContentText);
+      
+      fileWriter.close();
+
+      return ContentText;
+  }
+
+  // Class permettant de lire les logs
+  public static String ReadTextLogs(String ContentText) throws IOException
+  {
+      FileOutputStream fileWriter = new FileOutputStream(new File("Logs.txt"));
+
+      fileWriter.toString();
       
       fileWriter.close();
 

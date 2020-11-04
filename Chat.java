@@ -1,6 +1,12 @@
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 
 public class Chat {
+
+        static Date DateDuJour = new Date();
+        static DateFormat datefl = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL);
+
 
         public final String id;
         public final String name;
@@ -32,12 +38,12 @@ public class Chat {
         }
         //
 
-        public final static String resultLogs = "/-------------------/" + "\r\n" + "\r\n"
+        public final static String resultLogs = "/-------------------/" + "\r\n" + "\r\n" + datefl.format(DateDuJour)
                         + " -- Création du chat portant le nom : " + Chat.Mia.name + " - Race du chat - "
-                        + Chat.Mia.race + "\r\n" + " -- Création du chat portant le nom : " + Chat.Niou.name
-                        + " - Race du chat - " + Chat.Niou.race + "\r\n" + " -- Création du chat portant le nom : "
+                        + Chat.Mia.race + "\r\n" + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Niou.name
+                        + " - Race du chat - " + Chat.Niou.race + "\r\n" + datefl.format(DateDuJour) + " -- Création du chat portant le nom : "
                         + Chat.Miaou.name + " - Race du chat - " + Chat.Miaou.race + "\r\n"
-                        + " -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
+                        + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
                         + Chat.Chipsou.race + "\r\n" + "\r\n" + " /-------------------/ " + "\r\n";
 
         public static void ChatsDebug() throws IOException {
@@ -54,7 +60,7 @@ public class Chat {
         System.out.print("\r\n" + " /-------------------/ " + "\r\n");
 
           // Class permettant de sauvegarder le texte logs
-          Programme.SaveTextLogs(resultLogs.toString());
+          Programme.ReadTextLogs(resultLogs.toString() + resultLogs.toString());
         
     }
 }
