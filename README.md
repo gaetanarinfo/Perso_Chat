@@ -16,7 +16,13 @@
 
 3. Chat.java
 
-  --> Class Permettant de crée les premiers chat 
+  --> Class Permettant de crée les premiers chat.
+
+/********************/
+
+4. ListeChat.txt
+
+  --> Permet d'enregistrer vos propre chat. (Encore en cours de DEV)
 
 /********************/
 
