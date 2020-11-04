@@ -1,3 +1,5 @@
+// Dev By Gaëtan Seigneur //
+
 public class Chat {
 
     public final String id;
