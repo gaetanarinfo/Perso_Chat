@@ -408,13 +408,24 @@ public class Programme {
 
   // Class permettant de sauvegarder le texte
   public static String SaveText(String ContentText) throws IOException
-        {
-            FileWriter fileWriter = new FileWriter("ListeChat.txt");
-            fileWriter.write(ContentText);
-            
-            fileWriter.close();
+  {
+      FileWriter fileWriter = new FileWriter("ListeChat.txt");
+      fileWriter.write(ContentText);
+      
+      fileWriter.close();
 
-            return ContentText;
-        }
+      return ContentText;
+  }
+
+  // Class permettant de sauvegarder les logs
+  public static String SaveTextLogs(String ContentText) throws IOException
+  {
+      FileWriter fileWriter = new FileWriter("Logs.txt");
+      fileWriter.write(ContentText);
+      
+      fileWriter.close();
+
+      return ContentText;
+  }
       
 }
