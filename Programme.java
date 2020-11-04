@@ -1,5 +1,3 @@
-//-- Dev By Gaëtan Seigneur --//
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -65,7 +63,7 @@ public class Programme {
         contentPane.setLayout(groupLayout);
 
         // Panneau bouton chat
-        Icon addChatsIcon = new ImageIcon("http://79.91.234.196:7081/Chat_App/images/chat-btn.png");
+        Icon addChatsIcon = new ImageIcon("images/chat-btn.png");
         JButton removeChats = new JButton("Supprimé un chat", addChatsIcon);
         JButton addChats = new JButton("Ajouté un chat", addChatsIcon);
         addChats.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -207,7 +205,7 @@ public class Programme {
         // Image de fond
         ImageIcon imageIcon;
 
-        imageIcon = new ImageIcon("http://79.91.234.196:7081/Chat_App/images/CHARTREUX.png");
+        imageIcon = new ImageIcon("images/CHARTREUX.png");
         Image Images = imageIcon.getImage();
         Image newimg = Images.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
@@ -221,7 +219,7 @@ public class Programme {
 
         // Button Log
         ImageIcon imageIcon2;
-        imageIcon2 = new ImageIcon("http://79.91.234.196:7081/Chat_App/images/logs.png");
+        imageIcon2 = new ImageIcon("images/logs.png");
         Image Images2 = imageIcon2.getImage();
         Image newimg2 = Images2.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg2);
