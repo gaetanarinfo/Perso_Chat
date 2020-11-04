@@ -291,6 +291,7 @@ public class Programme {
         };
 
         btnaddchats = new MouseAdapter() {
+
           @Override
           public void mouseClicked(MouseEvent me) {
             super.mouseClicked(me);
@@ -310,102 +311,110 @@ public class Programme {
             pane.setText(pane.getText() + "\nLe chat " + Name.getText() + ", qui et de race " + Race.getText()
                 + ", et qui a " + Age.getSelectedItem() + " ans.");
 
-              String fileContent = pane.getText();
-     
-              FileWriter fileWriter = new FileWriter("ListeChat.txt");
-              fileWriter.write(fileContent);
-              
-              fileWriter.close();
-              }
+            // Class permettant de sauvegarder le texte
+            SaveText(pane.getText().toString());
+          }
 
-            }; 
-            
-            btnremovechats = new MouseAdapter() {
-              @Override
-              public void mouseClicked(MouseEvent me) {
-                  super.mouseClicked(me);
-                  btnremovechats();
-              }
-    
-              public void btnremovechats() {
+        };
+        btnremovechats = new MouseAdapter() {
+          @Override
+          public void mouseClicked(MouseEvent me) {
+            super.mouseClicked(me);
+            btnremovechats();
+          }
 
-                  System.out.print("\nVous avez suprimée un chat\n");
+          public void btnremovechats() {
 
-              }
-            };     
-              
-        Logs.addMouseListener(iconLogs);  
-        addChats.addMouseListener(btnaddchats); 
-        removeChats.addMouseListener(btnremovechats); 
+            System.out.print("\nVous avez suprimée un chat\n");
+
+          }
+        };
+
+        Logs.addMouseListener(iconLogs);
+        addChats.addMouseListener(btnaddchats);
+        removeChats.addMouseListener(btnremovechats);
         //
 
-      }       
+      }
     });
   }
-  
 
-    // Class pour la personnalisation du texte
-    public static class FontChat {
-        static final Font fontchat1 = new Font("Serif", Font.BOLD, 11);
+  // Class pour la personnalisation du texte
+  public static class FontChat {
+    static final Font fontchat1 = new Font("Serif", Font.BOLD, 11);
+  }
+  //
+
+  // Class pour la Limitation du texte
+  public static class JTextFieldLimit extends PlainDocument {
+
+    private static final long serialVersionUID = 1L;
+
+    private int limit;
+
+    JTextFieldLimit(int limit) {
+      super();
+      this.limit = limit;
     }
-    //
 
-    // Class pour la Limitation du texte
-    public static class JTextFieldLimit extends PlainDocument {
+    JTextFieldLimit(int limit, boolean upper) {
+      super();
+      this.limit = limit;
+    }
 
-        private static final long serialVersionUID = 1L;
+    public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
+      if (str == null)
+        return;
+      if ((getLength() + str.length()) <= limit) {
+        super.insertString(offset, str, attr);
+      }
+    }
+  }
 
-        private int limit;
+  // Bordure des formulaires
+  public static class BordureSimpleChat implements Border {
+    int top, left, bottom, right;
+    Color color = null;
 
-        JTextFieldLimit(int limit) {
-           super();
-           this.limit = limit;
+    public BordureSimpleChat() {
+      this.top = 2;
+      this.left = 2;
+      this.bottom = 2;
+      this.right = 2;
+      this.color = Color.darkGray;
+    }
+
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+      Insets insets = getBorderInsets(c);
+      if (color != null)
+        g.setColor(color);
+
+      g.fill3DRect(0, 0, width - insets.right, insets.top, true);
+
+      g.fill3DRect(0, insets.top, insets.left, height - insets.top, true);
+      g.fill3DRect(insets.left, height - insets.bottom, width - insets.left, insets.bottom, true);
+      g.fill3DRect(width - insets.right, 0, insets.right, height - insets.bottom, true);
+    }
+
+    public Insets getBorderInsets(Component c) {
+      return new Insets(top, left, bottom, right);
+    }
+
+    public boolean isBorderOpaque() {
+      return true;
+    }
+  }
+  //
+
+  // Class permettant de sauvegarder le texte
+  public static String SaveText(String ContentText) throws IOException
+        {
+            FileWriter fileWriter = new FileWriter("ListeChat.txt");
+            fileWriter.write(ContentText);
+            
+            fileWriter.close();
+
+            return ContentText;
         }
-
-        JTextFieldLimit(int limit, boolean upper) {
-           super();
-           this.limit = limit;
-        }
-
-        public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
-           if (str == null)
-              return;
-           if ((getLength() + str.length()) <= limit) {
-              super.insertString(offset, str, attr);
-           }
-        }
-     }
-
-     // Bordure des formulaires
-     public static class BordureSimpleChat implements Border {
-        int top,left,bottom,right;
-        Color color = null;
-        public BordureSimpleChat() {
-          this.top = 2;
-          this.left = 2;
-          this.bottom = 2;
-          this.right = 2;
-          this.color = Color.darkGray;
-        }
-
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            Insets insets = getBorderInsets(c);
-            if (color != null)
-              g.setColor(color);
-        
-            g.fill3DRect(0, 0, width - insets.right, insets.top, true);
-        
-            g.fill3DRect(0, insets.top, insets.left, height - insets.top, true);
-            g.fill3DRect(insets.left, height - insets.bottom, width - insets.left, insets.bottom, true);
-            g.fill3DRect(width - insets.right, 0, insets.right, height - insets.bottom, true);
-          }
-          public Insets getBorderInsets(Component c) {
-            return new Insets(top, left, bottom, right);
-          }
-          public boolean isBorderOpaque() {
-            return true;
-          }
-        }
-        //
       
 }
