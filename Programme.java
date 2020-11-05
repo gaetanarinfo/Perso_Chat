@@ -12,6 +12,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.Vector;
 
 import javax.swing.GroupLayout;
@@ -224,94 +227,6 @@ static MouseAdapter iconLogs;
         Background.setSize(150, 150);
         //
 
-        // Button Log
-        ImageIcon imageIcon2;
-        imageIcon2 = new ImageIcon("images/logs.png");
-        Image Images2 = imageIcon2.getImage();
-        Image newimg2 = Images2.getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        imageIcon = new ImageIcon(newimg2);
-
-        JLabel Logs = new JLabel(imageIcon2);
-        contentPane.add(Logs);
-        Logs.setIcon(imageIcon2);
-        Logs.setLocation(450, 5);
-        Logs.setSize(40, 40);
-        Logs.setToolTipText("Voir les logs");
-
-        Logs.addMouseListener(new MouseAdapter() {
-          @Override
-          public void mouseEntered(MouseEvent e) {
-            window.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-          }
-
-          @Override
-          public void mouseExited(MouseEvent e) {
-            window.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
-          }
-        });
-
-        iconLogs = new MouseAdapter() {
-          @Override
-          public void mouseClicked(MouseEvent me) {
-            super.mouseClicked(me);
-            try {
-              iconlogs();
-            } catch (IOException e) {
-              
-              e.printStackTrace();
-            }
-          }
-
-          public void iconlogs() throws IOException {
-            // Déclaration de l'action du button des logs
-            // Création d'une instance LogsFrame
-            JFrame LogsFrame = new JFrame("Logs");
-            LogsFrame.setSize(500, 400); // Taille de la fenêtre
-            LogsFrame.setVisible(true); // Permet de rendre la fenêtre visible
-            LogsFrame.setLocation(450, 75); // Permet de déplacer la fenêtre
-            LogsFrame.setResizable(false); // Supprime le redimensionnement de la fenêtre
-            LogsFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); // Changement de curseur
-            Container contentPaneLogs = LogsFrame.getContentPane();
-
-            GroupLayout groupLayout2 = new GroupLayout(contentPaneLogs);
-            contentPaneLogs.setLayout(groupLayout2);
-
-            // Style de la pane
-            JTextArea paneLogs = new JTextArea();
-            SimpleAttributeSet set = new SimpleAttributeSet();
-            set = new SimpleAttributeSet();
-            StyleConstants.setItalic(set, false);
-            StyleConstants.setForeground(set, Color.black);
-            StyleConstants.setBold(set, true);
-            paneLogs.setAutoscrolls(true);
-            paneLogs.setDocument(new JTextFieldLimit(1600));
-            paneLogs.setLineWrap(true);
-
-            // Ajout ligne par ligne des différents chat
-
-            String ContentTextLogs = null;
-
-            BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
-      
-            while ((ContentTextLogs = in.readLine()) != null)
-            {             
-                 paneLogs.setText(ContentTextLogs.strip());
-            }
-            
-            in.close();
-            //
-
-            // On ajout la pane au JFrame
-            paneLogs.setEditable(true);
-            paneLogs.setLocation(0, 0);
-            paneLogs.setSize(500, 400);
-            paneLogs.setOpaque(true);
-            contentPaneLogs.add(paneLogs);
-            contentPaneLogs.setBackground(Color.LIGHT_GRAY);
-            //
-          }
-        };
-
         btnaddchats = new MouseAdapter() {
 
           @Override
@@ -352,7 +267,6 @@ static MouseAdapter iconLogs;
           }
         };
 
-        Logs.addMouseListener(iconLogs);
         addChats.addMouseListener(btnaddchats);
         removeChats.addMouseListener(btnremovechats);
         //
@@ -450,24 +364,18 @@ static MouseAdapter iconLogs;
       return ContentText;
   }
 
-  // Class permettant de lire les logs
-  public static String ReadTextLogs() throws IOException
+  public static void ReadTextLogs() throws IOException
   {
+    String ContentTextLogs = null;
 
-      String ContentText;
+    BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
 
-      BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
+    while ((ContentTextLogs = in.readLine()) != null)
+    {             
+         System.out.println(ContentTextLogs);
+    }
 
-      while ((ContentText = in.readLine()) != null)
-			{
-		      // Afficher le contenu du fichier
-           System.out.println (ContentText);
-           
-      }
-      
-			in.close();
-
-      return ContentText;
+    in.close();
   }
       
 }
