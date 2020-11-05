@@ -48,6 +48,9 @@ public class Chat {
 
         public static void ChatsDebug(String ContentTextLogs) throws IOException {
           
-                Programme.SaveTextLogs(resultLogs.toString());
+
+                if(Programme.ReadTextLogs() == null){
+                        Programme.SaveTextLogs(resultLogs.toString());
+                }
         }   
 }

@@ -9,9 +9,17 @@ import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.GroupLayout;
@@ -35,7 +43,7 @@ import javax.swing.text.StyleConstants;
 
 public class Programme {
 
-static MouseAdapter iconLogs;
+  static MouseAdapter iconLogs;
   static MouseAdapter btnaddchats;
   static MouseAdapter btnremovechats;
 
@@ -50,6 +58,7 @@ static MouseAdapter iconLogs;
         try {
           Chat.ChatsDebug("");
           ReadTextLogs();
+
         } catch (IOException e1) {
 
           e1.printStackTrace();
@@ -108,8 +117,20 @@ static MouseAdapter iconLogs;
         pane.setDocument(new JTextFieldLimit(640));
         pane.setLineWrap(true);
 
-        // Ajout ligne par ligne des différents chat
-        pane.setText("" + Chat.result);
+        // Ajout ligne par ligne des différents chat au chargement du programme
+        var fileName = "ListeChat.txt";
+        var filePath = Paths.get(fileName);
+
+        byte[] data;
+        try {
+          data = Files.readAllBytes(filePath);
+          var content = new String(data);
+          pane.setText(content);
+
+        } catch (IOException e1) {
+          
+          e1.printStackTrace();
+        } 
         //
 
         // On ajout la pane au JFrame
@@ -266,10 +287,10 @@ static MouseAdapter iconLogs;
             // Déclaration de l'action du button des logs
             // Création d'une instance LogsFrame
             JFrame LogsFrame = new JFrame("Logs");
-            LogsFrame.setSize(500, 400); // Taille de la fenêtre
+            LogsFrame.setSize(800, 800); // Taille de la fenêtre
             LogsFrame.setVisible(true); // Permet de rendre la fenêtre visible
             LogsFrame.setLocation(450, 75); // Permet de déplacer la fenêtre
-            LogsFrame.setResizable(false); // Supprime le redimensionnement de la fenêtre
+            LogsFrame.setResizable(true); // Supprime le redimensionnement de la fenêtre
             LogsFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); // Changement de curseur
             Container contentPaneLogs = LogsFrame.getContentPane();
 
@@ -284,20 +305,23 @@ static MouseAdapter iconLogs;
             StyleConstants.setForeground(set, Color.black);
             StyleConstants.setBold(set, true);
             paneLogs.setAutoscrolls(true);
-            paneLogs.setDocument(new JTextFieldLimit(1600));
             paneLogs.setLineWrap(true);
 
-            // Ajout ligne par ligne des différents chat
-            paneLogs.setText("" + ReadTextLogs());
+            // Ajout ligne par ligne des différents chat au chargement du programme
+            String t = Programme.ReadTextLogs();
+
+            
+            paneLogs.setText(t.toString());
             //
 
             // On ajout la pane au JFrame
-            paneLogs.setEditable(true);
-            paneLogs.setLocation(0, 0);
-            paneLogs.setSize(500, 400);
-            paneLogs.setOpaque(true);
-            contentPaneLogs.add(paneLogs);
-            contentPaneLogs.setBackground(Color.LIGHT_GRAY);
+            paneLogs.setEditable(false);
+            paneLogs.setLocation(5, 0);
+            paneLogs.setSize(1000, 1000);
+            ;
+            paneLogs.setOpaque(false);
+            LogsFrame.add(paneLogs);
+            LogsFrame.setBackground(Color.LIGHT_GRAY);          
             //
           }
         };
@@ -318,13 +342,18 @@ static MouseAdapter iconLogs;
 
           public void btnaddchats() throws IOException {
 
-            System.out.print("Vous avez ajouté un chat\n");
+            System.out.print(Chat.datefl.format(Chat.DateDuJour) + " Vous avez ajouté un chat\n");
 
             pane.setText(pane.getText() + "\nLe chat " + Name.getText() + ", qui et de race " + Race.getText()
                 + ", et qui a " + Age.getSelectedItem() + " ans.");
 
             // Class permettant de sauvegarder le texte
             SaveText(pane.getText().toString());
+
+            // Class permettant de sauvegarder le logs
+
+            SaveTextLogs(ReadTextLogs() + Chat.datefl.format(Chat.DateDuJour) + " Vous avez ajouté un chat\n");
+
           }
 
         };
@@ -440,25 +469,20 @@ static MouseAdapter iconLogs;
       return ContentText;
   }
 
-  // Class permettant de lire les logs
-  public static String ReadTextLogs() throws IOException
-  {
+  public static String ReadTextLogs() throws IOException {
 
-      String ContentText;
+      var fileName = "Logs.txt";
+        var filePath = Paths.get(fileName);
 
-      BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
+        byte[] data;
+   
+          data = Files.readAllBytes(filePath);
+          var content = new String(data);
 
-      while ((ContentText = in.readLine()) != null)
-			{
-		      // Afficher le contenu du fichier
-           System.out.println (ContentText);
-           
-           ContentText.toString();
-      }
-      
-			in.close();
+          System.out.println(content);
+        
 
-      return ContentText;
+        return content;
   }
       
 }
