@@ -46,21 +46,8 @@ public class Chat {
                         + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
                         + Chat.Chipsou.race + "\r\n" + "\r\n" + " /-------------------/ " + "\r\n";
 
-        public static void ChatsDebug() throws IOException {
-
-        System.out.print(" /-------------------/ " + "\r\n" + "\r\n");
-        System.out.print(" -- Création du chat portant le nom : " + Chat.Mia.name + " - Race du chat - " + Chat.Mia.race
-                + "\r\n");
-        System.out.print(" -- Création du chat portant le nom : " + Chat.Niou.name + " - Race du chat - "
-                + Chat.Niou.race + "\r\n");
-        System.out.print(" -- Création du chat portant le nom : " + Chat.Miaou.name + " - Race du chat - "
-                + Chat.Miaou.race + "\r\n");
-        System.out.print(" -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
-                + Chat.Chipsou.race + "\r\n");
-        System.out.print("\r\n" + " /-------------------/ " + "\r\n");
-
-          // Class permettant de sauvegarder le texte logs
-          Programme.ReadTextLogs(resultLogs.toString() + resultLogs.toString());
-        
-    }
+        public static void ChatsDebug(String ContentTextLogs) throws IOException {
+          
+                Programme.SaveTextLogs(resultLogs.toString());
+        }   
 }

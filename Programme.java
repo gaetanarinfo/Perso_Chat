@@ -8,8 +8,8 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
@@ -47,10 +47,11 @@ static MouseAdapter iconLogs;
 
         System.out.print("\r\n" + " -- Démarrage du programme -- " + "\r\n" + "\r\n");
 
-        // Lancement du script java Chat
         try {
-          Chat.ChatsDebug();
+          Chat.ChatsDebug("");
+          ReadTextLogs();
         } catch (IOException e1) {
+
           e1.printStackTrace();
         }
 
@@ -253,10 +254,15 @@ static MouseAdapter iconLogs;
           @Override
           public void mouseClicked(MouseEvent me) {
             super.mouseClicked(me);
-            iconlogs();
+            try {
+              iconlogs();
+            } catch (IOException e) {
+              
+              e.printStackTrace();
+            }
           }
 
-          public void iconlogs() {
+          public void iconlogs() throws IOException {
             // Déclaration de l'action du button des logs
             // Création d'une instance LogsFrame
             JFrame LogsFrame = new JFrame("Logs");
@@ -282,7 +288,7 @@ static MouseAdapter iconLogs;
             paneLogs.setLineWrap(true);
 
             // Ajout ligne par ligne des différents chat
-            paneLogs.setText("" + Chat.resultLogs);
+            paneLogs.setText("" + ReadTextLogs());
             //
 
             // On ajout la pane au JFrame
@@ -435,13 +441,20 @@ static MouseAdapter iconLogs;
   }
 
   // Class permettant de lire les logs
-  public static String ReadTextLogs(String ContentText) throws IOException
+  public static String ReadTextLogs() throws IOException
   {
-      FileOutputStream fileWriter = new FileOutputStream(new File("Logs.txt"));
 
-      fileWriter.toString();
+      String ContentText;
+
+      BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
+
+      while ((ContentText = in.readLine()) != null)
+			{
+		      // Afficher le contenu du fichier
+   			  System.out.println (ContentText);
+			}
       
-      fileWriter.close();
+			in.close();
 
       return ContentText;
   }
