@@ -288,7 +288,17 @@ static MouseAdapter iconLogs;
             paneLogs.setLineWrap(true);
 
             // Ajout ligne par ligne des différents chat
-            paneLogs.setText("" + ReadTextLogs());
+
+            String ContentTextLogs;
+
+            BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
+      
+            while ((ContentTextLogs = in.readLine()) != null)
+            {             
+                 paneLogs.setText("" + ContentTextLogs.toString());
+            }
+            
+            in.close();
             //
 
             // On ajout la pane au JFrame
