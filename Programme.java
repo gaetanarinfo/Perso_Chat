@@ -451,8 +451,10 @@ static MouseAdapter iconLogs;
       while ((ContentText = in.readLine()) != null)
 			{
 		      // Afficher le contenu du fichier
-   			  System.out.println (ContentText);
-			}
+           System.out.println (ContentText);
+           
+           ContentText.toString();
+      }
       
 			in.close();
 
