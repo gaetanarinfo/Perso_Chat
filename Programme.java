@@ -16,10 +16,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+<<<<<<< HEAD
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+=======
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+>>>>>>> 8cb67974e3ec56e4bbe2d920f80d93ece2f0819d
 import java.util.Vector;
 
 import javax.swing.GroupLayout;
@@ -245,6 +250,7 @@ public class Programme {
         Background.setSize(150, 150);
         //
 
+<<<<<<< HEAD
         // Button Log
         ImageIcon imageIcon2;
         imageIcon2 = new ImageIcon("images/logs.png");
@@ -326,6 +332,8 @@ public class Programme {
           }
         };
 
+=======
+>>>>>>> 8cb67974e3ec56e4bbe2d920f80d93ece2f0819d
         btnaddchats = new MouseAdapter() {
 
           @Override
@@ -371,7 +379,6 @@ public class Programme {
           }
         };
 
-        Logs.addMouseListener(iconLogs);
         addChats.addMouseListener(btnaddchats);
         removeChats.addMouseListener(btnremovechats);
         //
@@ -469,6 +476,7 @@ public class Programme {
       return ContentText;
   }
 
+<<<<<<< HEAD
   public static String ReadTextLogs() throws IOException {
 
       var fileName = "Logs.txt";
@@ -483,6 +491,20 @@ public class Programme {
         
 
         return content;
+=======
+  public static void ReadTextLogs() throws IOException
+  {
+    String ContentTextLogs = null;
+
+    BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
+
+    while ((ContentTextLogs = in.readLine()) != null)
+    {             
+         System.out.println(ContentTextLogs);
+    }
+
+    in.close();
+>>>>>>> 8cb67974e3ec56e4bbe2d920f80d93ece2f0819d
   }
       
 }
