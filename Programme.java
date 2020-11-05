@@ -289,13 +289,13 @@ static MouseAdapter iconLogs;
 
             // Ajout ligne par ligne des différents chat
 
-            String ContentTextLogs;
+            String ContentTextLogs = null;
 
             BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
       
             while ((ContentTextLogs = in.readLine()) != null)
             {             
-                 paneLogs.setText("" + ContentTextLogs.toString());
+                 paneLogs.setText(ContentTextLogs.strip());
             }
             
             in.close();
@@ -463,7 +463,6 @@ static MouseAdapter iconLogs;
 		      // Afficher le contenu du fichier
            System.out.println (ContentText);
            
-           ContentText.toString();
       }
       
 			in.close();
