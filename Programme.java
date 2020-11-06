@@ -37,6 +37,7 @@ public class Programme {
   static MouseAdapter iconLogs;
   static MouseAdapter btnaddchats;
   static MouseAdapter btnremovechats;
+  static MouseAdapter ListeRacesT;
 
   public static void main(String[] args) throws Exception {
 
@@ -144,26 +145,21 @@ public class Programme {
         JLabel name = new JLabel("Nom du chat :");
         JLabel race = new JLabel("Race du chat :");
         JLabel age = new JLabel("Age du chat :");
-        JLabel image = new JLabel("Image du chat : Lien HTML");
 
         name.setLocation(30, 240);
         name.setSize(200, 20);
 
-        race.setLocation(270, 240);
+        race.setLocation(270, 280);
         race.setSize(200, 20);
 
         age.setLocation(30, 310);
         age.setSize(200, 20);
-
-        image.setLocation(270, 310);
-        image.setSize(200, 20);
         //
 
         // Ajout des label formulaire au Pane
         contentPane.add(name);
         contentPane.add(race);
         contentPane.add(age);
-        contentPane.add(image);
         //
 
         // Formulaire Texte pour l'ajout des chats
@@ -189,8 +185,8 @@ public class Programme {
         "Chat Bengal", "Chat Bleu russe","Chat Norvégien","Chat Persan","Chat Savannah","Exotic Shortair","Maine Coon","Munchkin","Ragdoll","Sacré de Birmanie","Siamois","Sphynx"
         };
 
-      //JComboBox mit Bundesländer-Einträgen wird erstellt
-      JComboBox<String> Races = new JComboBox<>(comboBoxListeChat);
+        //JComboBox mit Bundesländer-Einträgen wird erstellt
+        JComboBox<String> Races = new JComboBox<>(comboBoxListeChat);
 
         Name.setLocation(30, 270);
         Name.setSize(200, 30);
@@ -200,7 +196,7 @@ public class Programme {
         Name.setBorder(new BordureSimpleChat());
         Name.setToolTipText("Nom du chat");
 
-        Races.setLocation(270, 270);
+        Races.setLocation(270, 310);
         Races.setSize(200, 30);
         Races.setOpaque(false);
         Races.setBackground(Color.LIGHT_GRAY);
@@ -224,7 +220,8 @@ public class Programme {
         // Image de fond
         ImageIcon imageIcon;
 
-        imageIcon = new ImageIcon("images/CHARTREUX.png");
+        // Confition pour afficher les différents chat en image
+        imageIcon = new ImageIcon("images/CHARTREUX.png"); 
         Image Images = imageIcon.getImage();
         Image newimg = Images.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
