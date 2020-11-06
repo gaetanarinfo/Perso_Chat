@@ -73,25 +73,12 @@ public class Chat {
 
                     File file = new File("Logs.txt");
 
-                    if(file.length() == 0) {
-                        System.out.println("Fichier Vide");
-                    }else{
-                        System.out.println("Fichier remplie");
-                    }
-
                     return file;
         }
 
         public static File CheckEmptyFile() {
 
                 File file = new File("ListeChat.txt");
-
-                if(file.length() == 0) {
-                    System.out.println("Fichier Vide");
-                }else{
-                    System.out.println("Fichier remplie");
-                }
-
                 return file;
     }
 

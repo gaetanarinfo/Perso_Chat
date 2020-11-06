@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.GroupLayout;
 import javax.swing.Icon;
@@ -46,7 +44,8 @@ public class Programme {
 
       public void run() {
 
-        System.out.print("\r\n" + " -- Démarrage du programme -- " + "\r\n" + "\r\n");
+        System.out.println("-- Démarrage du programme Chat --");
+
 
         try {
           Chat.ChatsDebug("");
@@ -128,7 +127,7 @@ public class Programme {
 
         // On ajout la pane au JFrame
         pane.setEditable(false);
-        pane.setLocation(8, 40);
+        pane.setLocation(10, 40);
         pane.setSize(480, 180);
         pane.setOpaque(false);
         contentPane.add(pane);
@@ -276,7 +275,7 @@ public class Programme {
             }
           }
 
-          public String iconlogs() throws IOException {
+          public void iconlogs() throws IOException {
             // Déclaration de l'action du button des logs
             // Création d'une instance LogsFrame
             JFrame LogsFrame = new JFrame("Logs");
@@ -317,14 +316,7 @@ public class Programme {
             paneLogs.setBackground(Color.LIGHT_GRAY);       
             //
 
-            Pattern patt = Pattern.compile("(?i)\\b((?:https?://|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:\'\".,<>???“”‘’]))");
-            Matcher matcher = patt.matcher(LienImage.getText());    
-
-            if (matcher.group(1).startsWith("http://")){
-                        return matcher.replaceAll("<a href=\"$1\">$1</a>");
-            }else{
-                    return matcher.replaceAll("<a href=\"http://$1\">$1</a>");
-            }   
+            
           }
         };
 
@@ -347,7 +339,7 @@ public class Programme {
             System.out.print(Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez ajouté un chat\n");
 
             pane.setText(pane.getText() + "\nLe chat " + Name.getText() + ", qui et de race " + Race.getText()
-                + ", et qui a " + Age.getSelectedItem() + " ans." + " Photo ");
+                + ", et qui a " + Age.getSelectedItem() + " ans." + " Photo " + LienImage.getText());
 
             // Class permettant de sauvegarder le texte
             Chat.SaveText(pane.getText().toString());
