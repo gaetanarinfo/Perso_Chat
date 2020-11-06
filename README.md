@@ -1,4 +1,4 @@
-# Programme de développement JAVA (Code à partager)
+# Programme de développement JAVA
 
 1. Fichier -
 
@@ -29,5 +29,3 @@
 # Ce programme n'est pas terminée
 
 Pour le partage merci de mettre DEV By SEIGNEUR Gaëtan sur chaqune des pages java.
-
-# Je donne libre accès à ce petit logiciel.
