@@ -28,4 +28,4 @@
 
 # Ce programme n'est pas terminée
 
-Pour le partage merci de mettre DEV By SEIGNEUR Gaëtan sur chaqune des pages java.
+Pour le partage merci de mettre DEV By SEIGNEUR Gaëtan sur chaque une des pages java.
