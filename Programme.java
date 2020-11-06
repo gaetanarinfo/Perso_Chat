@@ -168,8 +168,6 @@ public class Programme {
 
         // Formulaire Texte pour l'ajout des chats
         JTextField Name = new JTextField("");
-        JTextField Race = new JTextField("");
-        JTextField LienImage = new JTextField("");
 
         // Age
         Vector<String> ListAge = new Vector<>(31);
@@ -185,6 +183,15 @@ public class Programme {
         JComboBox<String> Age = new JComboBox<>(ListAge);
         //
 
+        // Age
+        String comboBoxListeChat[] = {"Abyssin", "American Bobtail",
+        "American Curl", "American Wirehair", "Balinais", "British Shortair","Bobtail japonais","Chartreux",
+        "Chat Bengal", "Chat Bleu russe","Chat Norvégien","Chat Persan","Chat Savannah","Exotic Shortair","Maine Coon","Munchkin","Ragdoll","Sacré de Birmanie","Siamois","Sphynx"
+        };
+
+      //JComboBox mit Bundesländer-Einträgen wird erstellt
+      JComboBox<String> Races = new JComboBox<>(comboBoxListeChat);
+
         Name.setLocation(30, 270);
         Name.setSize(200, 30);
         Name.setFont(FontChat.fontchat1);
@@ -193,13 +200,13 @@ public class Programme {
         Name.setBorder(new BordureSimpleChat());
         Name.setToolTipText("Nom du chat");
 
-        Race.setLocation(270, 270);
-        Race.setSize(200, 30);
-        Race.setFont(FontChat.fontchat1);
-        Race.setDocument(new JTextFieldLimit(20));
-        Race.setOpaque(false);
-        Race.setBorder(new BordureSimpleChat());
-        Race.setToolTipText("Race du chat");
+        Races.setLocation(270, 270);
+        Races.setSize(200, 30);
+        Races.setOpaque(false);
+        Races.setBackground(Color.LIGHT_GRAY);
+        Races.setFont(FontChat.fontchat1);
+        Races.setBorder(new BordureSimpleChat());
+        Races.setToolTipText("Race du chat");
 
         Age.setLocation(30, 340);
         Age.setSize(200, 30);
@@ -209,17 +216,9 @@ public class Programme {
         Age.setBorder(new BordureSimpleChat());
         Age.setToolTipText("Age du chat");
 
-        LienImage.setLocation(270, 340);
-        LienImage.setSize(200, 30);
-        LienImage.setOpaque(false);
-        LienImage.setFont(FontChat.fontchat1);
-        LienImage.setBorder(new BordureSimpleChat());
-        LienImage.setToolTipText("Lien image du chat");
-
         contentPane.add(Name);
-        contentPane.add(Race);
         contentPane.add(Age);
-        contentPane.add(LienImage);
+        contentPane.add(Races);
         //
 
         // Image de fond
@@ -229,7 +228,6 @@ public class Programme {
         Image Images = imageIcon.getImage();
         Image newimg = Images.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
-
         JLabel Background = new JLabel(imageIcon);
         contentPane.add(Background);
         Background.setIcon(imageIcon);
@@ -338,8 +336,8 @@ public class Programme {
 
             System.out.print(Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez ajouté un chat\n");
 
-            pane.setText(pane.getText() + "\nLe chat " + Name.getText() + ", qui et de race " + Race.getText()
-                + ", et qui a " + Age.getSelectedItem() + " ans." + " Photo " + LienImage.getText());
+            pane.setText(pane.getText() + "\nLe chat " + Name.getText() + ", qui et de race " + Races.getSelectedItem()
+                + ", et qui a " + Age.getSelectedItem() + " ans.");
 
             // Class permettant de sauvegarder le texte
             Chat.SaveText(pane.getText().toString());
