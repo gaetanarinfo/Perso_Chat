@@ -361,15 +361,16 @@ public class Programme {
 
           public void btnremovechats() throws IOException {
 
-            System.out.print(Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez supprimé les chat\n");
+            System.out.print(Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez supprimé les chats\n");
 
+            // Recharge la pane
             pane.setText(Chat.result.toString());
 
-            Chat.SaveTextLogs(ReadTextLogs() + Chat.resultLogs.toString());
-
+            // Class permettant de sauvegarder le texte
             Chat.SaveText("" + Chat.result.toString());
 
-            Chat.SaveTextLogs(ReadTextLogs() + Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez supprimé les chat\n");
+            // Class permettant de sauvegarder le logs
+            Chat.SaveTextLogs(ReadTextLogs() + Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez supprimé les chats\n");
           }
         };
 
