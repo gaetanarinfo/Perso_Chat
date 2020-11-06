@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 
+import javax.lang.model.element.Element;
+
 public class Chat {
 
         static Date DateDuJour = new Date();
@@ -38,18 +40,21 @@ public class Chat {
         }
         //
 
-        public final static String resultLogs = "/-------------------/" + "\r\n" + "\r\n" + datefl.format(DateDuJour)
+        public final static String resultLogs = datefl.format(DateDuJour)
                         + " -- Création du chat portant le nom : " + Chat.Mia.name + " - Race du chat - "
                         + Chat.Mia.race + "\r\n" + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Niou.name
                         + " - Race du chat - " + Chat.Niou.race + "\r\n" + datefl.format(DateDuJour) + " -- Création du chat portant le nom : "
                         + Chat.Miaou.name + " - Race du chat - " + Chat.Miaou.race + "\r\n"
                         + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
-                        + Chat.Chipsou.race + "\r\n" + "\r\n" + " /-------------------/ " + "\r\n";
+                        + Chat.Chipsou.race + "\r\n" + "\r\n" + "\r\n";
 
         public static void ChatsDebug(String ContentTextLogs) throws IOException {
           
 
-                if(Programme.ReadTextLogs() == null){
+                if(Programme.SaveText(result) == "") {
+                        
+                }else{
+                        Programme.SaveText(result.toString());
                         Programme.SaveTextLogs(resultLogs.toString());
                 }
         }   

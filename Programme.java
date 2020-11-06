@@ -8,23 +8,10 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.RandomAccessFile;
-<<<<<<< HEAD
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
-=======
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
->>>>>>> 8cb67974e3ec56e4bbe2d920f80d93ece2f0819d
 import java.util.Vector;
 
 import javax.swing.GroupLayout;
@@ -250,7 +237,6 @@ public class Programme {
         Background.setSize(150, 150);
         //
 
-<<<<<<< HEAD
         // Button Log
         ImageIcon imageIcon2;
         imageIcon2 = new ImageIcon("images/logs.png");
@@ -293,12 +279,13 @@ public class Programme {
             // Déclaration de l'action du button des logs
             // Création d'une instance LogsFrame
             JFrame LogsFrame = new JFrame("Logs");
-            LogsFrame.setSize(800, 800); // Taille de la fenêtre
+            LogsFrame.setSize(1000, 1000); // Taille de la fenêtre
             LogsFrame.setVisible(true); // Permet de rendre la fenêtre visible
             LogsFrame.setLocation(450, 75); // Permet de déplacer la fenêtre
-            LogsFrame.setResizable(true); // Supprime le redimensionnement de la fenêtre
+            LogsFrame.setResizable(false); // Supprime le redimensionnement de la fenêtre
             LogsFrame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); // Changement de curseur
             Container contentPaneLogs = LogsFrame.getContentPane();
+               
 
             GroupLayout groupLayout2 = new GroupLayout(contentPaneLogs);
             contentPaneLogs.setLayout(groupLayout2);
@@ -322,18 +309,15 @@ public class Programme {
 
             // On ajout la pane au JFrame
             paneLogs.setEditable(false);
-            paneLogs.setLocation(5, 0);
-            paneLogs.setSize(1000, 1000);
-            ;
+            paneLogs.setLocation(10, 10);
+            paneLogs.setSize(980, 980);
             paneLogs.setOpaque(false);
             LogsFrame.add(paneLogs);
-            LogsFrame.setBackground(Color.LIGHT_GRAY);          
+            paneLogs.setBackground(Color.LIGHT_GRAY);       
             //
           }
         };
 
-=======
->>>>>>> 8cb67974e3ec56e4bbe2d920f80d93ece2f0819d
         btnaddchats = new MouseAdapter() {
 
           @Override
@@ -381,6 +365,7 @@ public class Programme {
 
         addChats.addMouseListener(btnaddchats);
         removeChats.addMouseListener(btnremovechats);
+        Logs.addMouseListener(iconLogs);
         //
 
       }
@@ -476,7 +461,6 @@ public class Programme {
       return ContentText;
   }
 
-<<<<<<< HEAD
   public static String ReadTextLogs() throws IOException {
 
       var fileName = "Logs.txt";
@@ -491,20 +475,6 @@ public class Programme {
         
 
         return content;
-=======
-  public static void ReadTextLogs() throws IOException
-  {
-    String ContentTextLogs = null;
-
-    BufferedReader in = new BufferedReader(new FileReader("Logs.txt"));
-
-    while ((ContentTextLogs = in.readLine()) != null)
-    {             
-         System.out.println(ContentTextLogs);
-    }
-
-    in.close();
->>>>>>> 8cb67974e3ec56e4bbe2d920f80d93ece2f0819d
   }
       
 }
