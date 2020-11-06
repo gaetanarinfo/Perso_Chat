@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -72,7 +71,7 @@ public class Programme {
 
         // Panneau bouton chat
         Icon addChatsIcon = new ImageIcon("images/chat-btn.png");
-        JButton removeChats = new JButton("Supprimé un chat", addChatsIcon);
+        JButton removeChats = new JButton("Supprimé les chat", addChatsIcon);
         JButton addChats = new JButton("Ajouté un chat", addChatsIcon);
         addChats.setHorizontalTextPosition(SwingConstants.CENTER);
         addChats.setForeground(Color.BLACK);
@@ -334,17 +333,16 @@ public class Programme {
 
           public void btnaddchats() throws IOException {
 
-            System.out.print(Chat.datefl.format(Chat.DateDuJour) + " Vous avez ajouté un chat\n");
+            System.out.print(Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez ajouté un chat\n");
 
             pane.setText(pane.getText() + "\nLe chat " + Name.getText() + ", qui et de race " + Race.getText()
                 + ", et qui a " + Age.getSelectedItem() + " ans.");
 
             // Class permettant de sauvegarder le texte
-            SaveText(pane.getText().toString());
+            Chat.SaveText(pane.getText().toString());
 
             // Class permettant de sauvegarder le logs
-
-            SaveTextLogs(ReadTextLogs() + Chat.datefl.format(Chat.DateDuJour) + " Vous avez ajouté un chat\n");
+            Chat.SaveTextLogs(ReadTextLogs() + Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez ajouté un chat\n");
 
           }
 
@@ -353,13 +351,25 @@ public class Programme {
           @Override
           public void mouseClicked(MouseEvent me) {
             super.mouseClicked(me);
-            btnremovechats();
+            try {
+              btnremovechats();
+            } catch (IOException e) {
+             
+              e.printStackTrace();
+            }
           }
 
-          public void btnremovechats() {
+          public void btnremovechats() throws IOException {
 
-            System.out.print("\nVous avez suprimée un chat\n");
+            System.out.print(Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez supprimé les chat\n");
 
+            pane.setText(Chat.result.toString());
+
+            Chat.SaveTextLogs(ReadTextLogs() + Chat.resultLogs.toString());
+
+            Chat.SaveText("" + Chat.result.toString());
+
+            Chat.SaveTextLogs(ReadTextLogs() + Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez supprimé les chat\n");
           }
         };
 
@@ -438,28 +448,6 @@ public class Programme {
     }
   }
   //
-
-  // Class permettant de sauvegarder le texte
-  public static String SaveText(String ContentText) throws IOException
-  {
-      FileWriter fileWriter = new FileWriter("ListeChat.txt");
-      fileWriter.write(ContentText);
-      
-      fileWriter.close();
-
-      return ContentText;
-  }
-
-  // Class permettant de sauvegarder les logs
-  public static String SaveTextLogs(String ContentText) throws IOException
-  {
-      FileWriter fileWriter = new FileWriter("Logs.txt");
-      fileWriter.write(ContentText);
-      
-      fileWriter.close();
-
-      return ContentText;
-  }
 
   public static String ReadTextLogs() throws IOException {
 

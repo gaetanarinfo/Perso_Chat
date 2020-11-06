@@ -1,8 +1,8 @@
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
-
-import javax.lang.model.element.Element;
 
 public class Chat {
 
@@ -46,16 +46,64 @@ public class Chat {
                         + " - Race du chat - " + Chat.Niou.race + "\r\n" + datefl.format(DateDuJour) + " -- Création du chat portant le nom : "
                         + Chat.Miaou.name + " - Race du chat - " + Chat.Miaou.race + "\r\n"
                         + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
-                        + Chat.Chipsou.race + "\r\n" + "\r\n" + "\r\n";
+                        + Chat.Chipsou.race + "\r\n";
 
         public static void ChatsDebug(String ContentTextLogs) throws IOException {
-          
 
-                if(Programme.SaveText(result) == "") {
-                        
+                        if (CheckEmptyFile().length() == 0) {
+                                SaveText(result.toString());
+                        }
+
+                        if (CheckEmptyFileLogs().length() == 0) {
+                                SaveTextLogs(resultLogs.toString());
+                        }
+        }
+
+        // Class permettant de sauvegarder les logs
+        public static String SaveTextLogs(String ContentText) throws IOException {
+                FileWriter fileWriter = new FileWriter("Logs.txt");
+                fileWriter.write(ContentText);
+
+                fileWriter.close();
+
+                return ContentText;
+        }
+
+        public static File CheckEmptyFileLogs() {
+
+                    File file = new File("Logs.txt");
+
+                    if(file.length() == 0) {
+                        System.out.println("Fichier Vide");
+                    }else{
+                        System.out.println("Fichier remplie");
+                    }
+
+                    return file;
+        }
+
+        public static File CheckEmptyFile() {
+
+                File file = new File("ListeChat.txt");
+
+                if(file.length() == 0) {
+                    System.out.println("Fichier Vide");
                 }else{
-                        Programme.SaveText(result.toString());
-                        Programme.SaveTextLogs(resultLogs.toString());
+                    System.out.println("Fichier remplie");
                 }
-        }   
+
+                return file;
+    }
+
+        // Class permettant de sauvegarder le texte
+        public static String SaveText(String ContentText) throws IOException
+        {
+        FileWriter fileWriter = new FileWriter("ListeChat.txt");
+        fileWriter.write(ContentText);
+        
+        fileWriter.close();
+
+        return ContentText;
+        }
+   
 }
