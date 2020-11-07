@@ -2,8 +2,8 @@
 
 1. Fichier -
 
-  --> Chat.jar
-  --> Chat.desktop
+  --> Chat.jar<br>
+  --> Chat.desktop<br>
   --> Dossier images/
 
   /********************/
@@ -36,9 +36,9 @@
 
   Si vous avez des problèmes de lancement faite un :
 
-  sudo chmod ugo+x /
-  sudo chmod ugo+x Chat.jar
-  sudo chmod ugo+x Chat.desktop
+  sudo chmod ugo+x /<br>
+  sudo chmod ugo+x Chat.jar<br>
+  sudo chmod ugo+x Chat.desktop<br>
   sudo chmod ugo+x images
 
   (Dans un terminal sur le dossier chat)
