@@ -18,11 +18,17 @@
 
    /********************/
   
-  3. Si vous passez par une console faite : 
+3. Si vous passez par une console faite : 
 
-  "Ce qui est mieux d'ailleur."
+  "Ce qui est mieux d'ailleur à faire."
 
-  cd & mkdir Chat & cd Chat & tar xzvf Applications.tar.gz
+  cd & mkdir Chat 
+  <br>
+  cd Chat 
+  <br>
+  wget https://github.com/gaetanarinfo/Perso_Chat/raw/main/T%C3%A9l%C3%A9chargement/App.tar.gz
+  <br>
+  tar xzvf App.tar.gz
 
   /********************/
 
