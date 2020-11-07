@@ -1,3 +1,6 @@
+// Petit programme crée par Gaëtan Seigneur
+// Je me réserve le droit de supprimer, modifier, ou de le rendre privé
+
 import java.util.Calendar;
 import java.util.Date;
 
