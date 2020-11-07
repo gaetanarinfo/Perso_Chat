@@ -1,4 +1,4 @@
-# Installation du Programme JAVA
+# Installation du Programme Chat sur Linux (Pour le moment)
 
 1. Fichier -
 
@@ -45,4 +45,4 @@
 
 /********************/
 
-# Ce programme est terminée
+# Ce programme est terminé est fonctionnel si vous respectez la procédure d'installation.
