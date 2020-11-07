@@ -22,10 +22,7 @@
 
   "Ce qui est mieux d'ailleur."
 
-  cd
-  mkdir Chat
-  cd Chat
-  tar xzvf Applications.tar.gz
+  cd & mkdir Chat & cd Chat & tar xzvf Applications.tar.gz
 
   /********************/
 
