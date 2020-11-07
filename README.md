@@ -26,6 +26,6 @@
 
 /********************/
 
-# Ce programme n'est pas terminée
+# Ce programme est terminé
 
 Pour le partage merci de mettre DEV By SEIGNEUR Gaëtan sur chaque une des pages java.
