@@ -2,8 +2,8 @@
 
 1. Fichier -
 
-  --> Programme.java
-  --> Chat.java
+  --> Programme.java<br>
+  --> Chat.java<br>
   --> ListeChat.txt
 
 /********************/
