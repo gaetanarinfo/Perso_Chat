@@ -51,6 +51,7 @@ public class Programme {
         try {
           Chat.ChatsDebug("");
           ReadTextLogs();
+          DayImg.DayByImg("");
 
         } catch (IOException e1) {
 
