@@ -234,8 +234,10 @@ public class Programme {
 
         // Image de fond
         ImageIcon imageIcon;
-        // Confition pour afficher les différents chat en image
+
+        // Condition pour afficher les différents chat en image mois par mois de janvier à décembre en commençant par 0
         imageIcon = new ImageIcon("images/Month/" + DayImg.DayByImg() + ".png"); 
+
         Image Images = imageIcon.getImage();
         Image newimg = Images.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
