@@ -1,10 +1,9 @@
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
 public class DayImg {
 
-    public static String DayByImg(String daybyimg) throws IOException {
+    public static String DayByImg(){
 
         Date DateDuJour = new Date();
         Calendar calendar = Calendar.getInstance();

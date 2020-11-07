@@ -51,8 +51,6 @@ public class Programme {
         try {
           Chat.ChatsDebug("");
           ReadTextLogs();
-          DayImg.DayByImg("");
-
         } catch (IOException e1) {
 
           e1.printStackTrace();
@@ -236,9 +234,8 @@ public class Programme {
 
         // Image de fond
         ImageIcon imageIcon;
-
         // Confition pour afficher les différents chat en image
-        imageIcon = new ImageIcon("images/CHARTREUX.png"); 
+        imageIcon = new ImageIcon("images/Month/" + DayImg.DayByImg() + ".png"); 
         Image Images = imageIcon.getImage();
         Image newimg = Images.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         imageIcon = new ImageIcon(newimg);
@@ -326,9 +323,7 @@ public class Programme {
             paneLogs.setOpaque(false);
             LogsFrame.add(paneLogs);
             paneLogs.setBackground(Color.LIGHT_GRAY);       
-            //
-
-            
+            //        
           }
         };
 
