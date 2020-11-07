@@ -145,21 +145,26 @@ public class Programme {
         JLabel name = new JLabel("Nom du chat :");
         JLabel race = new JLabel("Race du chat :");
         JLabel age = new JLabel("Age du chat :");
+        JLabel sexe = new JLabel("Sexe du chat :");
 
         name.setLocation(30, 240);
         name.setSize(200, 20);
 
-        race.setLocation(270, 280);
+        race.setLocation(270, 240);
         race.setSize(200, 20);
 
         age.setLocation(30, 310);
         age.setSize(200, 20);
+
+        sexe.setLocation(270, 310);
+        sexe.setSize(200, 20);
         //
 
         // Ajout des label formulaire au Pane
         contentPane.add(name);
         contentPane.add(race);
         contentPane.add(age);
+        contentPane.add(sexe);
         //
 
         // Formulaire Texte pour l'ajout des chats
@@ -175,18 +180,20 @@ public class Programme {
           ListAge.add(j + " an(s)");
 
         }
-
         JComboBox<String> Age = new JComboBox<>(ListAge);
         //
 
-        // Age
+        // Races
         String comboBoxListeChat[] = {"Abyssin", "American Bobtail",
         "American Curl", "American Wirehair", "Balinais", "British Shortair","Bobtail japonais","Chartreux",
         "Chat Bengal", "Chat Bleu russe","Chat Norvégien","Chat Persan","Chat Savannah","Exotic Shortair","Maine Coon","Munchkin","Ragdoll","Sacré de Birmanie","Siamois","Sphynx"
         };
-
-        //JComboBox mit Bundesländer-Einträgen wird erstellt
         JComboBox<String> Races = new JComboBox<>(comboBoxListeChat);
+
+        // Sexe
+        String comboBoxSexeChat[] = {"Mâle", "Femelle"
+        };
+        JComboBox<String> Sexe = new JComboBox<>(comboBoxSexeChat);
 
         Name.setLocation(30, 270);
         Name.setSize(200, 30);
@@ -196,13 +203,21 @@ public class Programme {
         Name.setBorder(new BordureSimpleChat());
         Name.setToolTipText("Nom du chat");
 
-        Races.setLocation(270, 310);
+        Races.setLocation(270, 270);
         Races.setSize(200, 30);
         Races.setOpaque(false);
         Races.setBackground(Color.LIGHT_GRAY);
         Races.setFont(FontChat.fontchat1);
         Races.setBorder(new BordureSimpleChat());
         Races.setToolTipText("Race du chat");
+
+        Sexe.setLocation(270, 340);
+        Sexe.setSize(200, 30);
+        Sexe.setOpaque(false);
+        Sexe.setBackground(Color.LIGHT_GRAY);
+        Sexe.setFont(FontChat.fontchat1);
+        Sexe.setBorder(new BordureSimpleChat());
+        Sexe.setToolTipText("Sexe du chat");
 
         Age.setLocation(30, 340);
         Age.setSize(200, 30);
@@ -215,6 +230,7 @@ public class Programme {
         contentPane.add(Name);
         contentPane.add(Age);
         contentPane.add(Races);
+        contentPane.add(Sexe);
         //
 
         // Image de fond
@@ -334,7 +350,7 @@ public class Programme {
             System.out.print(Chat.datefl.format(Chat.DateDuJour) + " -- Vous avez ajouté un chat\n");
 
             pane.setText(pane.getText() + "\nLe chat " + Name.getText() + ", qui et de race " + Races.getSelectedItem()
-                + ", et qui a " + Age.getSelectedItem() + " ans.");
+                + ", et qui a " + Age.getSelectedItem() + " ans." + " Sexe " + Sexe.getSelectedItem());
 
             // Class permettant de sauvegarder le texte
             Chat.SaveText(pane.getText().toString());

@@ -14,39 +14,47 @@ public class Chat {
         public final String name;
         public final String race;
         public final int age;
+        public final String sexe;
 
         // Création de chats fictifs
-        public final static Chat Mia = new Chat("id-100", "Mia", "Persan", 5);
-        public final static Chat Niou = new Chat("id-101", "Niou", "Bengal", 9);
-        public final static Chat Miaou = new Chat("id-102", "Miaou", "Abyssin", 12);
-        public final static Chat Chipsou = new Chat("id-103", "Chipsou", "Siamois", 18);
+        public final static Chat Mia = new Chat("id-100", "Mia", "Persan", 5, "Femelle");
+        public final static Chat Niou = new Chat("id-101", "Niou", "Bengal", 9, "Femelle");
+        public final static Chat Miaou = new Chat("id-102", "Miaou", "Abyssin", 12, "Femelle");
+        public final static Chat Chipsou = new Chat("id-103", "Chipsou", "Siamois", 18, "Mâle");
+        
 
         // Ajout ligne par ligne des différents chat
         public final static String result = "Le chat " + Mia.name + ", qui et de race " + Mia.race + ", et qui a "
-                        + Mia.age + " ans." + "\nLe chat " + Niou.name + ", qui et de race " + Niou.race + ", et qui a "
-                        + Niou.age + " ans." + "\nLe chat " + Miaou.name + ", qui et de race " + Miaou.race
-                        + ", et qui a " + Miaou.age + " ans." + "\nLe chat " + Chipsou.name + ", qui et de race "
-                        + Chipsou.race + ", et qui a " + Chipsou.age + " ans.";
+                        + Mia.age + " ans." + " Sexe " + Mia.sexe + "\nLe chat " + Niou.name + ", qui et de race " + Niou.race + ", et qui a "
+                        + Niou.age + " ans." + " Sexe " + Niou.sexe + "\nLe chat " + Miaou.name + ", qui et de race " + Miaou.race
+                        + ", et qui a " + Miaou.age + " ans." + " Sexe " + Miaou.sexe + "\nLe chat " + Chipsou.name + ", qui et de race "
+                        + Chipsou.race + ", et qui a " + Chipsou.age + " ans." + " Sexe " + Chipsou.sexe;
 
         // Constructeur Chat
-        public Chat(final String id, final String name, final String race, final int age) {
+        public Chat(final String id, final String name, final String race, final int age, final String sexe) {
 
                 super();
                 this.id = id;
                 this.name = name;
                 this.race = race;
                 this.age = age;
+                this.sexe = sexe;
 
         }
         //
 
-        public final static String resultLogs = datefl.format(DateDuJour)
-                        + " -- Création du chat portant le nom : " + Chat.Mia.name + " - Race du chat - "
-                        + Chat.Mia.race + "\r\n" + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Niou.name
-                        + " - Race du chat - " + Chat.Niou.race + "\r\n" + datefl.format(DateDuJour) + " -- Création du chat portant le nom : "
-                        + Chat.Miaou.name + " - Race du chat - " + Chat.Miaou.race + "\r\n"
-                        + datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
-                        + Chat.Chipsou.race + "\r\n";
+        public final static String resultLogs = 
+        
+                        datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Mia.name + " - Race du chat - " + Chat.Mia.race + " Sexe : " + Chat.Chipsou.sexe + "\r\n" +    
+                        
+                        datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Niou.name
+                        + " - Race du chat - " + Chat.Niou.race + " Sexe : " + Chat.Chipsou.sexe + "\r\n" + 
+                        
+                        datefl.format(DateDuJour) + " -- Création du chat portant le nom : "
+                        + Chat.Miaou.name + " - Race du chat - " + Chat.Miaou.race + " Sexe : " + Chat.Chipsou.sexe + "\r\n" +                    
+                        
+                        datefl.format(DateDuJour) + " -- Création du chat portant le nom : " + Chat.Chipsou.name + " - Race du chat - "
+                        + Chat.Chipsou.race + " Sexe : " + Chat.Chipsou.sexe + "\r\n";
 
         public static void ChatsDebug(String ContentTextLogs) throws IOException {
 

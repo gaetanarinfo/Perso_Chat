@@ -1,7 +1,4 @@
-Le chat Mia, qui et de race Persan, et qui a 5 ans.
-Le chat Niou, qui et de race Bengal, et qui a 9 ans.
-Le chat Miaou, qui et de race Abyssin, et qui a 12 ans.
-Le chat Chipsou, qui et de race Siamois, et qui a 18 ans.
-Le chat b,n,b, qui et de race ,b,, et qui a 1 an(s) ans. Photo http://google.fr
-Le chat wcwcw, qui et de race Sacré de Birmanie, et qui a 7 an(s) ans.
-Le chat wcwcw, qui et de race Chat Bengal, et qui a 7 an(s) ans.
+Le chat Mia, qui et de race Persan, et qui a 5 ans. Sexe Femelle
+Le chat Niou, qui et de race Bengal, et qui a 9 ans. Sexe Femelle
+Le chat Miaou, qui et de race Abyssin, et qui a 12 ans. Sexe Femelle
+Le chat Chipsou, qui et de race Siamois, et qui a 18 ans. Sexe Mâle
